@@ -66,6 +66,7 @@ const SignUp = () => {
         />
         <button type='submit' className='text-3xl glass bg-pink-500 p-6 w-1/2 mx-auto rounded-xl'>Sign Up</button>
       </form>
+      <a href="/">Home</a>
     </section>
   )
 }

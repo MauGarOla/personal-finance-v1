@@ -19,7 +19,7 @@ export async function POST(request: Request) {
 export async function DELETE(request: Request) {
     const { id } = await request.json()
     const res = await pool.query(
-        "DELETE * FROM accounts WHERE id = $1 RESPONSE *", [ id ]
+        "DELETE FROM accounts WHERE id = $1 RESPONSE *", [ id ]
     )
 
     if (res.rowCount === 0 ) {
