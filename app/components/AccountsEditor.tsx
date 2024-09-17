@@ -1,6 +1,15 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
+  
 
 type Currency = {
     id: number
@@ -41,14 +50,19 @@ const AccountsEditor = () => {
                 type="text"
                 required 
             />
-            <select name="currency-select">
-                { currencies.map((currency: Currency) => {
-                    return (
-                        <option key={currency.id} value={currency.id}>{ currency.symbol }</option>
-                    )
-                }) }
-                <option value="4">JPY</option>
-            </select>
+            
+            <Select name="currency-select">
+            <SelectTrigger className="w-[100px]">
+                <SelectValue />
+            </SelectTrigger>
+                <SelectContent>
+                    { currencies.map((currency: Currency) => {
+                        return (
+                            <SelectItem key={currency.id} value={currency.id}>{ currency.symbol }</SelectItem>
+                        )
+                    })}
+                </SelectContent>
+            </Select>
         </form>
     )
 }
