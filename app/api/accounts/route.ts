@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
     const res = await pool.query(
-        "SELECT (name, balance) FROM accounts"
+        "SELECT (id, name, currency_id , balance) FROM accounts"
     )
     return NextResponse.json(res)
 }
@@ -19,7 +19,7 @@ export async function POST(request: Request) {
 export async function DELETE(request: Request) {
     const { id } = await request.json()
     const res = await pool.query(
-        "DELETE FROM accounts WHERE id = $1 RESPONSE *", [ id ]
+        "DELETE FROM accounts WHERE id = $1 RETURNING *", [ id ]
     )
 
     if (res.rowCount === 0 ) {
